@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './Components/Home';
+import NewAnecdote from './Components/NewAnecdote';
+import About from './Components/About';
+import Header from './Components/Header';
+import { AnecdoteProvider } from './Context/Anecdote.context';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header />
+        <AnecdoteProvider>
+          <div className="container-fluid">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/add_anecdote" exact component={NewAnecdote} />
+              <Route path="/about" exact component={About} />
+              <Route path="*">
+                <h3>404 Not Found</h3>
+              </Route>
+            </Switch>
+          </div>
+        </AnecdoteProvider>
+      </BrowserRouter>
     </div>
   );
 }

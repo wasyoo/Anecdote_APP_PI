@@ -1,5 +1,7 @@
-.App {
-  text-align: center;
+em {
+  font-size: 13px;
+  font-style: italic;
+  color: #838383
 }
 
 .App-logo {
